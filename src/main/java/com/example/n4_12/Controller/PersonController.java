@@ -10,10 +10,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
 public class PersonController {
+
 
     @Autowired
     private PersonRepository repository;
@@ -58,5 +60,10 @@ public class PersonController {
     @DeleteMapping("/persons/{id}/messages/{messageId}")
     public Person removeMessage(@PathVariable int id, @PathVariable int messageId){
         return service.deleteMessageFromPerson(id, messageId);
+    }
+
+    @GetMapping("/persons/{id}/messages")
+    public List<Message> getMessagesfromPerson (@PathVariable int id){
+        return service.allMessagesFromPerson(id);
     }
 }
