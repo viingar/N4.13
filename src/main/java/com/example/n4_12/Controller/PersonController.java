@@ -1,6 +1,8 @@
 package com.example.n4_12.Controller;
 
 import com.example.n4_12.Repository.PersonRepository;
+import com.example.n4_12.Service.PersonService;
+import com.example.n4_12.dto.Message;
 import com.example.n4_12.dto.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +17,12 @@ public class PersonController {
 
     @Autowired
     private PersonRepository repository;
+    private PersonService service;
+
+    public PersonController(PersonService service) {
+        this.service = service;
+    }
+
     @GetMapping("/person")
     public Iterable<Person> getPersons() {
         return repository.findAll();
@@ -42,4 +50,10 @@ public class PersonController {
     public void deletePerson(@PathVariable int id) {
         repository.deleteById(id);
     }
+    @PostMapping("/persons/{id}/messages")
+    public Person addMessage(@PathVariable int id, @RequestBody Message message) {
+        return service.addMeesageToPerson(id, message);
+    }
+
+
 }
