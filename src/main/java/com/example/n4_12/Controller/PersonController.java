@@ -55,5 +55,8 @@ public class PersonController {
         return service.addMeesageToPerson(id, message);
     }
 
-
+    @DeleteMapping("/persons/{id}/messages/{messageId}")
+    public Person removeMessage(@PathVariable int id, @PathVariable int messageId){
+        return service.deleteMessageFromPerson(id, messageId);
+    }
 }
