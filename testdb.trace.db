@@ -1,0 +1,4 @@
+2024-07-06 17:49:06.419162+03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "PERSO" не найдена
+Table "PERSO" not found; SQL statement:
+SELECT * FROM PERSO [42102-224]

@@ -1,11 +1,18 @@
 package com.example.n4_12.dto;
 
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import org.springframework.data.annotation.Id;
+
 import java.time.LocalDate;
 
 
+@Entity
 public class Person {
-
+    @jakarta.persistence.Id
+    @Id
+    @GeneratedValue
     private int id;
     private String firstname;
     private String surname;
@@ -32,7 +39,13 @@ public class Person {
     }
 
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getFirstname() {
         return firstname;
@@ -66,11 +79,5 @@ public class Person {
         this.birthday = birthday;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
-    public int getId() {
-        return id;
-    }
 }
